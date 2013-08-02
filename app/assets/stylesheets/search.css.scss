@@ -1,0 +1,49 @@
+#cd-search ul { 
+	list-style-type: none; 
+	display: block;
+	padding: 0; 
+	margin: 0; 
+}
+
+#cd-search ul a {
+	text-decoration: none;
+}
+.search-item {
+	text-decoration: none;
+	cursor: pointer;
+	clear: both;
+	height: 80px;
+	margin: 10px;
+	background: #E6E6E6;
+	display: block;
+}
+
+.search-item:hover { background-color: #999; 
+					color: #FFFFFF; }
+
+
+.search-content {
+}
+
+.search-ref {	
+	font: bold 200% Verdana, Georgia;
+	color: red;
+	float: left;
+	margin: 0px 10px;
+	width: 90px;
+}
+
+.search-desc {
+	width: 320px;
+	float: left;
+}
+
+.search-dates {
+	margin: 5px;
+	float: left;
+	font-style: italic;
+	font-size: 0.8em;
+}
+.search-pic {
+	float: right;
+}

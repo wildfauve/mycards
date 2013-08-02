@@ -1,0 +1,54 @@
+.tag {	clear: both;
+		font: 15px arial,sans-serif;
+		list-style-type: none;
+		display: block;
+		margin: 20px;
+		padding: 5px;
+		width: 300px;
+		background-color: white;	
+		}
+
+ul#tag-list {list-style-type: none;
+	padding: 0;
+	margin: 0;
+	}
+
+#tag-list li {
+	clear: both;
+	padding: 10px;
+}
+
+.tag-list-size {
+	float: left;
+	width: 50px;
+	display: block;
+	border: 3px solid #0A5980;
+	background-color: #0A5980; 
+	margin:0 10px 10px 0;
+	text-align: center;
+	color: white;
+	padding: 2px;
+}
+
+.tag-list-name {
+	float: left;
+	width: 300px;	
+	border: 3px solid #0A5980;
+	margin:0 10px 10px 0;
+	padding: 2px;
+}
+
+.tag-list-name a:link, .tag-list-name a:visited{	
+	text-decoration: none;
+	display: block;
+	}
+.tag-list-name a:hover { 
+	background-color: #133663; 
+	color: #FFFFFF; }
+
+
+.tag-list-action {
+	float: left;
+	width: 100px;
+	padding: 5px;
+}

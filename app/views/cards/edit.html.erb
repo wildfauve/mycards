@@ -1,0 +1,56 @@
+<% title "Edit Card" %>
+
+<div class="cd-ref">
+	<%= @card.ref_id %>
+</div>
+
+<div>
+	<%= form_for @card do |form| %>
+		<% if @card.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+				<ul>
+					<% @card.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="field">
+			<legend>What Are you working on:</legend>
+			<%= form.text_area :description, :cols => 100, :rows => 5 %>
+		</div>
+		
+		<div class="field">
+			<%= form.label :price %>
+			<%= form.text_field :card_price, :value => @card.card_price.format %>
+		</div>
+		
+		<div>
+			<legend>Made</legend>
+			<%= form.text_field :date_made, :class => "date-picker"%>
+		</div>
+		<div>
+			<%= form.label :card_tags, "Tags" %><br />
+			<%= form.text_field :card_tags, "data-pre" => @card.tags.map(&:token_map).to_json %>
+		</div>
+		<div>
+			<%= form.label :card_custs, "Customers" %><br />
+			<%= form.text_field :card_custs, "data-pre" => @card.customers.map(&:name_map).to_json %>
+			<legend>Sold</legend>			
+			<%= form.text_field :date_sold, :class => "date-picker"%>
+			<%= form.check_box :no_charge %>
+			<%= form.label :no_charge, "No Charge?" %>
+		</div>
+		
+		<div>
+			<%= form.submit "Submit", :class => "form-submit-button" %>
+		</div>		
+	<% end %>
+	<p>
+		<%= render :partial => "card_picture"%>
+	</p>
+	
+
+</div>

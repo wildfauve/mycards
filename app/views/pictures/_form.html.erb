@@ -1,0 +1,22 @@
+<div class="border-form">
+	<%= form_for([@card, @picture], :html => { :multipart => true  }) do |f| %>
+	  <% if @picture.errors.any? %>
+	    <div id="error_explanation">
+	      <h2><%= pluralize(@picture.errors.count, "error") %> prohibited this thing from being saved:</h2>
+
+	      <ul>
+	      <% @picture.errors.full_messages.each do |msg| %>
+	        <li><%= msg %></li>
+	      <% end %>
+	      </ul>
+	    </div>
+	  <% end %>
+
+		<p><%= f.label "Upload a New Card Picture" %></p>
+	  <p><%= f.file_field :card_image, :class => "button"%></p>
+	  </p>
+	  <div class="actions">
+	    <%= f.submit "Create Pic", :class => "form-submit-button" %>
+	  </div>
+	<% end %>
+</div>

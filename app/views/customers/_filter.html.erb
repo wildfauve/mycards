@@ -1,0 +1,6 @@
+<%= form_for @customer, :url => filter_customers_path do |form| %>
+	<div class="filter">
+		<%= form.text_field :name, :placeholder => "Filter Customer List" %>
+		<div class="hint">To filter the customer list, type the first few characters of a customer and hit Enter</div>		
+	</div>
+<% end %>

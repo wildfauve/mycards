@@ -1,0 +1,48 @@
+<div class="border-form">
+	<%= form_for @card, :url => cards_path, :remote => true do |form| %>
+		<% if @card.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+				<ul>
+					<% @card.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
+		<% end %>
+		<div class="field">
+			<%= form.text_area :description, :cols => 60, :rows => 5, :placeholder => "Enter Card Description" %>
+		</div>
+
+		<div class="field">
+			<p>
+				Price:
+				<%= form.text_field :card_price, :value => @card.card_price.format %>
+			</p>
+		</div>
+		
+		
+		<div>
+			<%= form.label :date_made %>
+			<%= form.text_field :date_made, :placeholder => "The Date Made", :class => "date-picker" %>
+		</div>
+		<div>
+			<ul class="token-input-list">
+				<li class="token-input-input-token">
+					<%= form.label :card_tags, "Tags" %><br />
+					<%= form.text_field :card_tags, "data-pre" => @card.tags.map(&:token_map).to_json %>
+				</li>
+			</ul>
+		</div>
+		<div>
+			<p>
+				<%= form.submit "Create", :class => "form-submit-button" %>
+			</p>
+		</div>
+		
+			
+	<%end%>
+
+</div>
+</br>

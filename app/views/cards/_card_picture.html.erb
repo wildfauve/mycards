@@ -1,0 +1,11 @@
+<div class="item-pic">
+	<% if @card.pictures.size > 0 %>
+		<%= link_to card_path(@card) do%>				
+		 <%= image_tag(Picture.random_for_card(@card.id), :border => 0) %>
+		<% end %>
+		<p><% pic_text = "Add Another"%></p>
+	<% else %>
+		<p><% pic_text = "Add a Pic"%></p>
+	<% end %>
+	<%= link_to pic_text, card_pictures_path(@card), :class => "small-button" %>
+</div>

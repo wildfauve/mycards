@@ -1,0 +1,24 @@
+<% title "Tags" %>
+
+<div class="new-tag">
+	<%= render :partial => "form" %>
+</div>
+<div>
+	<ul id="tag-list">
+		<% @tags.each do |tag| %>		
+				<li>
+					<div class="tag-list-size">
+						<%= tag.cards.size%>
+					</div>
+					<div class="tag-list-name">
+						<%= link_to(tag.token, url_for(searches_path(:search => tag.token, :src => "tags"))) %>
+					</div>
+					<div class="tag-list-action">					
+						<%= link_to "delete", tag_path(tag), :method => :delete, :class => "small-button" %>
+					</div>
+				</li>
+		<% end %>
+	</ul>	
+</div>
+<br/>
+<div class="pagination"><%= paginate @tags %></div>

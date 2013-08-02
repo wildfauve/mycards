@@ -1,0 +1,17 @@
+<% curr_date = nil %>
+<ul>
+	<% head_date_data = "00-00-00" %>
+	<% @cards.each do |card| %>
+		<% if curr_date == nil || curr_date != card.date_made %>
+			<% head_date_data = card.date_made.strftime('%s')  %>
+			<%= render :partial => "cards/list_header", :locals => {:card => card} %>
+		<% end %>
+		<% curr_date = card.date_made %>
+		<% @card = card %>
+		<%= render :partial => "cards/list_detail", :locals => {:head_date_data => head_date_data} %>
+
+	<% end %>
+</ul>
+
+<div class="pagination"><%= paginate @cards %></div>
+

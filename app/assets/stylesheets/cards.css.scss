@@ -1,0 +1,121 @@
+$head-colour: #004080;
+$list-colour: #EEE8CD;
+$box-colour: #dbd515;
+
+#cd-list { margin: 0; 
+			padding: 0; 
+}
+
+#cd-list ul { list-style-type: none; 
+			display: block;
+			padding: 0; 
+			margin: 0; }
+
+.cd-date-hdr { margin: 0; 
+	list-type: none;
+	line-height: 0em; 
+	height: 30px;
+	padding: 1em; 
+	background-color: $head-colour;
+	clear: both;
+}
+
+.cd-date-hdr div.date-tag {
+	float: left;
+}
+
+.cd-date-hdr div.date-tag p {
+	font: bold 15px;
+	color: white;
+}
+
+.cd-date-hdr div.num-tag {
+	float: right;
+}
+
+.cd-list-item { 
+	background-color: $list-colour;
+	clear: both;
+	list-style-type: none;
+}
+
+.cd-ref {
+	font: bold 200% Verdana, Georgia;
+	color: red;	
+	text-decoration: none;
+}
+
+.item-pic {
+	float: left;
+	height:125px;
+	width:125px;
+	background:$box-colour;
+	}
+	
+.item-text {float: left;
+			width: 300px;
+}
+
+.item-text a {
+		text-decoration: none;
+}
+
+.item-tags {float: left;}
+
+.item-links {clear: both;}
+
+
+
+.new-list-item { display: none;}
+
+.num-box{
+	font:bold 15px Tahoma, Geneva, sans-serif;
+	font-style:normal;
+	color:#ffffff;
+	background:$box-colour;
+	border:0px solid #ffffff;
+	text-shadow:0px -1px 1px #222222;
+	box-shadow:2px 2px 5px #000000;
+	-moz-box-shadow:2px 2px 5px #000000;
+	-webkit-box-shadow:2px 2px 5px #000000;
+	border-radius:10px 10px 10px 10px;
+	-moz-border-radius:10px 10px 10px 10px;
+	-webkit-border-radius:10px 10px 10px 10px;
+	width:46px;
+	padding:13px 11px;
+	cursor:pointer;
+	margin:0 auto;
+}
+
+.search-result {
+	font-style: italic;
+	font-size: 0.9em;
+	margin: 5px;
+	color: #004080;
+}
+
+.pagination{
+	padding:.3em;
+	margin:.3em; 
+	font: 13.34px helvetica,arial,freesans,clean,sans-serif;}
+.pagination a{
+	padding:.1em .3em;
+	margin:.2em;
+	border:1px solid #aad;
+	text-decoration:none;
+	color:#369;}
+.pagination a:hover,.pagination a:active{
+	border:1px solid #369;
+	color:#000;}
+.pagination span.current{
+	padding:.1em .3em;
+	margin:.2em;
+	border:1px solid #369;
+	font-weight:bold;
+	background-color:#369;
+	color:#FFF;}
+.pagination span.disabled{
+	padding:.1em .3em;
+	margin:.2em;
+	border:1px solid #eee;
+	color:#ddd;}

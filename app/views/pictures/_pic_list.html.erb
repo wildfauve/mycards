@@ -1,0 +1,21 @@
+<div id="pics-list">
+	<div id="pics-hdr">
+		<p>Current Picture List</p>
+	</div>
+
+	<ul>
+	<% for picture in @card.pictures do %>
+
+		<li>
+			<div class="pic-item">
+				<%= link_to (image_tag(picture.card_image.thumb(Mycards::Application.config.thumbsize).url, :border => 0)), card_picture_path(@card, picture) %>
+			</div>
+			<div class="pic-actions">
+				<%= link_to 'Delete', card_picture_path(@card, picture), :method => :delete, :class => "small-button" %>
+			</div>
+		</li>
+
+	<% end %>
+
+	</ul>
+</div>

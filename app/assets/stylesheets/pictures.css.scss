@@ -1,0 +1,34 @@
+$head-colour: #004080;
+
+#pics-hdr { margin: 0; 
+	list-type: none;
+	line-height: 0em; 
+	height: 40px; 
+	background-color: $head-colour;
+	color: white;
+	font: bold 100% Verdana, Georgia;
+	vertical-align: middle;
+	clear: both;
+	margin: 0px 0px 5px 0px;
+}
+
+#pics-list { 
+			margin: 20px;
+			padding: 5px;
+			width: 400px;
+			background-color: white;}
+
+#pics-list ul { list-style-type: none; 
+			display: block;
+			padding: 0; 
+			margin: 0; }
+			
+.pic-item {
+	float: left;
+	height:100px;
+	width:125px;
+	clear: both;
+	}
+.pic-actions {
+	float: left;
+}

@@ -1,0 +1,39 @@
+<% title "Search" %>
+
+<% if @cards.respond_to?(:total_entries)%>
+	<div class="search-result">
+		<%= "Found #{@cards.total_entries} card(s)" %>
+	</div>
+<% end %>
+
+<div id="cd-search">
+	<ul>
+		<% for card in @cards %>
+			<%= link_to card_path(card) do%>				
+				<div class='search-item'>
+					<li>
+						<div class="search-content" data-id="<%=card.id %>">
+							<div class="search-ref">
+								<%= card.ref_id %>
+							</div>
+							<div class='search-desc'>
+								<% card.description.length > 100 ? append = " ..<more>.." : append = "" %>
+								<%= card.description.slice(0, 100) + append %>
+							</div>
+							<div class="search-dates">
+								<p>Made: <%= Date.parse(card.date_made).strftime('%a %d %B %Y')%></p>
+								<p>Sold: <%= Date.parse(card.date_sold).strftime('%a %d %B %Y') if !card.date_sold.nil? %></p>
+							</div>
+							<div class='search-pic'>
+								<%= picture_for(card.id) %>
+							</div>
+						</div>
+					</li>
+				</div>
+			<% end %>
+		<% end %>
+	</ul>
+</div>
+<%= will_paginate (@cards) %>
+</br>
+<%= google_event_track_js %>

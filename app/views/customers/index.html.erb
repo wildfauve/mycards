@@ -1,0 +1,37 @@
+<% title "Customers" %>
+<div class="new-customer bottom-line">
+	<%= render :partial => "form" %>
+</div>
+<div id="filter-area" class="bottom-line">
+	<% if @filter.present? %>
+		<div id="filter">
+			<div class="filter-name"><%= @filter %></div>
+			<div class="cd-inner">Current Filter</div>
+			<div class="action"><%= link_to "Remove", customers_path %></div>
+		</div>
+	<% end %>
+	<div id="filter-form">
+		<%= render :partial => "filter" %>
+	</div>
+</div>
+
+<br/>
+<div>
+	<ul id="cust-list">
+		<% @customers.each do |customer| %>		
+				<li>
+					<div class="cust-list-size">
+						<%= customer.cards.size%>
+					</div>
+					<div class="cust-list-name">
+						<%= link_to(customer.name, url_for(searches_path(:search => customer.name, :src => "customers"))) %>
+					</div>
+					<div class="cust-list-action">					
+						<%= link_to "delete", customer_path(customer), :method => :delete, :class => "small-button" %>
+					</div>
+				</li>
+		<% end %>
+	</ul>	
+</div>
+<br/>
+<div class="pagination"><%= paginate @customers %></div>

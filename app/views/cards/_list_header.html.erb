@@ -1,0 +1,8 @@
+<% head_date_display = card.date_made.strftime('%a %d %B %Y') %>
+<% head_date_data = card.date_made.strftime('%s')  %>
+<div class="cd-date-hdr" data-date="<%= head_date_data %>" >
+	<div class="date-tag">
+		<p><%= head_date_display %></p>
+	</div>
+	<div class="num-tag"><span class="num-box"><%=Card.where(date_made: card.date_made).count%></span></div>
+</div>

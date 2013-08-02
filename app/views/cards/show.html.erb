@@ -1,0 +1,7 @@
+<% title "Card Number #{@card.ref_id}"%>
+
+<% head_date_data = @card.date_made.strftime('%s')  %>
+
+<%= render :partial => "cards/list_detail", :locals => {:head_date_data => head_date_data} %>
+
+<%= render :partial => "pictures/pic_list" %>

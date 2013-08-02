@@ -1,0 +1,12 @@
+<% tags = Tag.top_5 %>
+<div id="tag-cloud">
+	<p>Top Tags</p>
+	<ul>
+		<% for tag in tags %>
+			<li>
+				<%= "#{tag.token}, #{tag.cards.size}" %>
+			</li>
+		<% end %>
+	</ul>
+			
+</div>
