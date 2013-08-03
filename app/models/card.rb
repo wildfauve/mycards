@@ -3,7 +3,8 @@ class Card
   @@per_page = 10
   
   include Mongoid::Document
-  
+  include Mongoid::Timestamps  
+    
   include Tire::Model::Search
   include Tire::Model::Callbacks
   
@@ -90,7 +91,7 @@ class Card
     page = params[:page] || "1"
     Rails.logger.info(">>>CARDS MODEL SEARCH #{page}")
     doc_from = ((page.to_i - 1) * @@per_page)
-    if params[:search].present?
+    if params[:search].present?  # param entered from the search box
       params[:src].present? ? qstring = params[:src] + ":" + params[:search] : qstring = params[:search] 
       r = tire.search do
         query {string qstring }
@@ -98,11 +99,12 @@ class Card
         size @@per_page
       end
       Rails.logger.info(">>>CARDS MODEL>>#{qstring} #{r.inspect}")
-#s      tire.search(params[:search], page: (params[:page] || 1), load: true)
     else
-      r = self.all.order_by([:date_made, :desc]).page(params[:page])
+      order_by = :date_made
+      order_by = :ref_id if params[:order].present? && params[:order] == "sequence"
+      r = self.all.desc(order_by).page(params[:page])      
     end
-    return r
+    r
   end
 
   def to_indexed_json

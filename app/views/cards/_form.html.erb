@@ -25,7 +25,7 @@
 		
 		<div>
 			<%= form.label :date_made %>
-			<%= form.text_field :date_made, :placeholder => "The Date Made", :class => "date-picker" %>
+			<%= form.text_field :date_made, :value => @card.date_made.strftime('%d-%m-%Y'), :placeholder => "The Date Made", :class => "date-picker" %>
 		</div>
 		<div>
 			<ul class="token-input-list">
@@ -37,7 +37,7 @@
 		</div>
 		<div>
 			<p>
-				<%= form.submit "Create", :class => "form-submit-button" %>
+				<%= form.submit "Create", :class => "small-button" %>
 			</p>
 		</div>
 		
@@ -45,4 +45,3 @@
 	<%end%>
 
 </div>
-</br>

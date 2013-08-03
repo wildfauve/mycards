@@ -1,5 +1,6 @@
 class Picture
   include Mongoid::Document
+  include Mongoid::Timestamps    
 #  attr_accessible :image, :image_cache
   field :card_image_uid
   image_accessor :card_image

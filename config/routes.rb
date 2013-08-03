@@ -28,7 +28,6 @@ Mycards::Application.routes.draw do
   resources :searches
   
   resources :charts
-  
-  #match "/images/uploads/*path" => "gridfs#serve"
+
 
 end

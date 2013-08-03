@@ -1,4 +1,8 @@
 <% curr_date = nil %>
+<p>
+<%= link_to "Order By Date Entered", cards_path(:order => "entered"), :class => "small-button" %> 
+<%= link_to "Order By Sequence Number", cards_path(:order => "sequence"), :class => "small-button" %>
+</p>
 <ul>
 	<% head_date_data = "00-00-00" %>
 	<% @cards.each do |card| %>

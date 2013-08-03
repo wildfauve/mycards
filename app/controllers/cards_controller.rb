@@ -86,7 +86,6 @@ class CardsController < ApplicationController
     @card_counter = Card.current_card_ct
   end
 
-
   private
   
   def date_helper(dates)

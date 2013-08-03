@@ -2,9 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 $ ->
-	$('.date-picker').datepicker {
-		dateFormat: "dd-mm-yy"
-	}
+	$('.date-picker').datepicker({
+		dateFormat: 'dd-mm-yy'
+	})
 	$('#card_card_tags').tokenInput('/tags/query.json', { 
 		crossDomain: false,
 		prePopulate: $('#cards_card_tags').data("pre"),
