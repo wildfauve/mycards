@@ -38,6 +38,7 @@ class Tag
     end
     limited = t.sort_by{|k| k[:freq]}
     limited[limited.length-20..limited.length] if limited.length > 20
+    return limited
   end
 
   def token_map

@@ -23,6 +23,8 @@ if header.length == 0
 # There now should always be a header to append to
 item = $("<%= escape_javascript(render(:partial => 'list_detail', :locals => {:head_date_data => head_date_data})) %>")
 header = $(".cd-date-hdr[data-date='<%= head_date_data%>']")
+if header.size() > 1
+	header = header[0]
 header.after (index) ->
 	item.addClass('new-list-item')
 	$(this).after(item)

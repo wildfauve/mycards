@@ -3,7 +3,7 @@
 	$.ajax
 		url: '/tags/tag_cloud.json'
 		success: (data) ->
-			$("#tag-cloud").jQCloud(data, {
+			$("#tag-cloud"	).jQCloud(data, {
 				height: 450, 
 				width: 380
 				})

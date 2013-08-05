@@ -15,3 +15,12 @@ $ ->
 		prePopulate: $('#cards_card_custs').data("pre"),
 		theme: "mac"
 	 })
+	$('#form-hide').click () ->
+		link_text = $('#form-hide a')
+		if link_text.text() == 'Hide Form'
+			$('#newcard').slideUp('slow')
+			link_text.text('Show Form')
+		else
+			$('#newcard').slideDown('slow')
+			link_text.text('Hide Form')			
+			
