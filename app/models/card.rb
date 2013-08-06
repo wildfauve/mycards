@@ -53,6 +53,10 @@ class Card
     end
   end
 
+  def delete_card
+    self.destroy
+  end
+
   def card_tags=(tag_ids)
     tags_list = tag_ids.split(",")
     self.tag_ids = tags_list
@@ -76,7 +80,11 @@ class Card
   end
 
   def card_price=(new_price)
-    # TODO: need to check that price is numeric
+    # Implement a TEST card --price starts with "#T"
+    if new_price.match /^#T/  # it is a test message
+      @test_card = true
+      new_price = "0.00"
+    end
     if /^[\d]+(\.[\d]+){0,1}$/ === new_price.gsub(/\$/, "")
       new_price = Money.parse(new_price, "NZD")
       if [Fixnum, Money].include? new_price.class
@@ -142,7 +150,7 @@ class Card
   
   
   def create_index
-    self.ref_id = Integer(Counter.increment("card"))
+    @test_card ? self.ref_id = 0 : self.ref_id = Integer(Counter.increment("card"))
   end
 
   def modify_total_sold

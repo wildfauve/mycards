@@ -73,8 +73,7 @@ class CardsController < ApplicationController
   # DELETE /cards/1.json
   def destroy
     @card = Card.find(params[:id])
-    @card.destroy
-
+    @card.delete_card
     respond_to do |format|
       format.html { redirect_to cards_url }
       format.js
