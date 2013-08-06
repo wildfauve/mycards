@@ -11,14 +11,17 @@ if header.length == 0
 	if $('.cd-date-hdr').size() == 0
 		$('.cd-list').append(hdr_content)
 		# data. representation of the data- attr
-	if parseInt($('.cd-date-hdr:last').data('date') ) > <%= head_date_data %> 
-		$('.cd-list-item:last').after (index) ->
-			alert(hrd_content)			
-			$(this).after(hdr_content)
 	else
-		$('.cd-date-hdr').each (index) -> 
-			if parseInt($(this).data('date') ) < <%= head_date_data %>
-				$(this).before(hdr_content)
+		if parseInt($('.cd-date-hdr:last').data('date') ) > <%= head_date_data %> 
+			$('.cd-list-item:last').after (index) ->
+				alert(hrd_content)			
+				$(this).after(hdr_content)
+		else
+			found = false
+			$('.cd-date-hdr').each (index, element) => 
+				if parseInt($(element).data('date')) < <%= head_date_data %> && !found
+					$(element).before(hdr_content)
+					found = true
 
 # There now should always be a header to append to
 item = $("<%= escape_javascript(render(:partial => 'list_detail', :locals => {:head_date_data => head_date_data})) %>")
