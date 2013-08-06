@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   end
   
   def build_flash_errors(model)
-    flash[:notice] = "There is a Notice"
     if model.errors.any?
       flash[:errors] = model.errors.messages
     end

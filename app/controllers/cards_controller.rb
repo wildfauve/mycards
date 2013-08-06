@@ -38,15 +38,15 @@ class CardsController < ApplicationController
   # POST /cards
   # POST /cards.json
   def create
-    Rails.logger.info(">>>card Controller>>CREATE: #{params.inspect}, #{request.format}")
-    @card = Card.create(params[:card])
-    Rails.logger.info(">>>Card Controller>>Create Valid?: #{@card.valid?}, #{@card.inspect} ")
+    @card = Card.create_card(params[:card])
+    Rails.logger.info(">>>card Controller>>CREATE: #{params.inspect}, #{@card.errors.inspect}")    
     respond_to do |format|
-      if @card.valid?
+      if @card.errors.blank?
         format.html { redirect_to card_path(@card) }
         format.js
         format.json
       else
+        build_flash_errors(@card)        
         format.html { render action: "new" }
         format.js { render "create_errors" }
         format.json

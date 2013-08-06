@@ -42,6 +42,17 @@ class Card
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :customers
 
+  def self.create_card(params)
+    card = self.new(params)
+    if card.errors.blank? 
+      card.save!
+      card
+    else
+      raise
+      card
+    end
+  end
+
   def card_tags=(tag_ids)
     tags_list = tag_ids.split(",")
     self.tag_ids = tags_list
@@ -66,14 +77,17 @@ class Card
 
   def card_price=(new_price)
     # TODO: need to check that price is numeric
-    new_price = Money.parse(new_price, "NZD")
-    unless [Fixnum, Money].include? new_price.class
-      raise ArgumentError, 'The "card_price" arg must be a Money or Fixnum'
+    if /^[\d]+(\.[\d]+){0,1}$/ === new_price.gsub(/\$/, "")
+      new_price = Money.parse(new_price, "NZD")
+      if [Fixnum, Money].include? new_price.class
+        new_price = new_price.cents if new_price.is_a? Money
+        self.cents_price = new_price
+      else
+        errors.add(:card_price, "Card Price is not a Money value")        
+      end
+    else
+      errors.add(:card_price, "Card Price does not appear to be a number") unless /^[\d]+(\.[\d]+){0,1}$/ === new_price.gsub(/\$/, "")
     end
-
-    new_price = new_price.cents if new_price.is_a? Money
-
-    self.cents_price = new_price
   end
     
   def self.total_sales
