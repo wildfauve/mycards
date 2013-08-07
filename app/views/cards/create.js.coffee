@@ -12,19 +12,14 @@ if header.length == 0
 		$('.cd-list').append(hdr_content)
 		# data. representation of the data- attr
 	else
-		if parseInt($('.cd-date-hdr:last').data('date') ) > <%= head_date_data %> 
-			last_date = $('.cd-date-hdr:last').data('date')
-			alert(last_date)
-			if $('.cd-date-hdr:last').data('date') == last_date
-				$('.cd-list-item:last').after (index, item) =>
-				alert("there is a last item")			
-				$(item).after(hdr_content)
+		if parseInt($('.cd-date-hdr:last').data('date') ) > <%= head_date_data %>  #need to insert at the end
+			last_date = parseInt($('.cd-date-hdr:last').data('date'))
+			if parseInt($('.cd-list-item:last').data('date')) == last_date  # needs to be after the list item
+				$('.cd-list-item:last').after(hdr_content)
 			else
-				$('.cd-date-hdr:last').after (index, item) =>
-				alert("no last item")			
-				$(item).after(hdr_content)
+				$('.cd-date-hdr:last').after(hdr_content) # no list items, so stright after the other header
 		else
-			$('.cd-date-hdr').each (index, element) => 
+			$('.cd-date-hdr').each (i, element) => 
 				if parseInt($(element).data('date')) < <%= head_date_data %>
 					$(element).before(hdr_content)
 					return false
@@ -34,13 +29,12 @@ item = $("<%= escape_javascript(render(:partial => 'list_detail', :locals => {:h
 header = $(".cd-date-hdr[data-date='<%= head_date_data%>']")
 if header.size() > 1
 	header = header[0]
-header.after (index) ->
+header.after () ->
 	item.addClass('new-list-item')
 	$(this).after(item)
 	item.slideDown('slow').removeClass('new-list-item')
 newnum = $(".cd-list-item[data-date='<%= head_date_data%>']").size()
 header.find('span').text(newnum)
-# alert("newnum: " + newnum + "curr" + currentnum + "Length: " + $(this).length ) 
 
 # now, RESET the form
 $('#card_card_tags').tokenInput('clear')
