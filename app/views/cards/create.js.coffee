@@ -4,8 +4,7 @@
 $('#new-status').empty()
 
 # Create a header to place the card item under
-header = $(".cd-date-hdr[data-date='<%= head_date_data%>']")
-if header.length == 0
+if $(".cd-date-hdr[data-date='<%= head_date_data%>']").length == 0
 	<% card = @card %>
 	hdr_content = "<%= escape_javascript(render(:partial => 'cards/list_header', :locals => {:card => card} )) %>"
 	if $('.cd-date-hdr').size() == 0
@@ -26,14 +25,13 @@ if header.length == 0
 
 # There now should always be a header to append to
 item = $("<%= escape_javascript(render(:partial => 'list_detail', :locals => {:head_date_data => head_date_data})) %>")
-header = $(".cd-date-hdr[data-date='<%= head_date_data%>']")
-if header.size() > 1
-	header = header[0]
+header = $(".cd-date-hdr[data-date='<%= head_date_data%>']:first")
 header.after () ->
 	item.addClass('new-list-item')
 	$(this).after(item)
 	item.slideDown('slow').removeClass('new-list-item')
-newnum = $(".cd-list-item[data-date='<%= head_date_data%>']").size()
+#newnum = $(".cd-list-item[data-date='<%= head_date_data%>']").size()
+newnum = <%= @card.total_made_on_this_date %>
 header.find('span').text(newnum)
 
 # now, RESET the form

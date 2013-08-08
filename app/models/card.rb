@@ -53,6 +53,10 @@ class Card
     end
   end
 
+  def self.total_made(date)
+    self.where(:date_made => date).count
+  end
+
   def delete_card
     self.destroy
   end
@@ -140,6 +144,10 @@ class Card
       }.to_json
   end
     
+  def total_made_on_this_date
+    Card.where(:date_made => self.date_made).size
+  end  
+  
   private
   
   def self.calc_total_sales

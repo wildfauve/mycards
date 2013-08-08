@@ -4,5 +4,5 @@
 	<div class="date-tag">
 		<p><%= head_date_display %></p>
 	</div>
-	<div class="num-tag"><span class="num-box"><%=Card.where(date_made: card.date_made).count%></span></div>
+	<div class="num-tag"><span class="num-box"><%=Card.total_made(card.date_made) %></span></div>
 </div>
