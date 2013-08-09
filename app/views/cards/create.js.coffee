@@ -36,7 +36,7 @@ header.find('span').text(newnum)
 
 # now, RESET the form
 $('#card_card_tags').tokenInput('clear')
-$('form').get(1).reset()
+$('#new_card')[0].reset()
 
 # get a new cloud tag list
 @populateTagCloud()
