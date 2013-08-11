@@ -1,4 +1,4 @@
-namespace :admin user do
+namespace :admin do
   desc 'Some User tasks'
   task :test_picture_url => :environment do
     Card.all.each do |card|

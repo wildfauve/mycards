@@ -1,0 +1,22 @@
+<% model_class = Envsettings %>
+<% title model_class.to_s %>
+<%= link_to "New Environment", new_config_path, :class => "small button"%>
+<table>
+  <thead>
+    <tr>
+      <th width="200">Environment</th>
+      <th>Params</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% for e in @configs %>
+    	<tr>
+      	<td><%= e.environment%></td>
+			<td>
+			</td>
+			<td>
+			</td>
+		</tr>
+	<% end %>
+	</tbody>
+</table>

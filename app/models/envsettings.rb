@@ -1,4 +1,4 @@
-class Config
+class Envsettings
 
   include Mongoid::Document
   include Mongoid::Timestamps  
