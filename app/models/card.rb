@@ -115,7 +115,6 @@ class Card
 
   def self.search(params)
     page = params[:page] || "1"
-    Rails.logger.info(">>>CARDS MODEL SEARCH #{page}")
     doc_from = ((page.to_i - 1) * @@per_page)
     if params[:search].present?  # param entered from the search box
       params[:src].present? ? qstring = params[:src] + ":" + params[:search] : qstring = params[:search] 
@@ -124,10 +123,9 @@ class Card
         from doc_from
         size @@per_page
       end
-      Rails.logger.info(">>>CARDS MODEL>>#{qstring} #{r.inspect}")
     else
-      order_by = :date_made
-      order_by = :ref_id if params[:order].present? && params[:order] == "sequence"
+      order_by = :ref_id
+      order_by = :date_made if params[:order].present? && params[:order] == "date_made"
       r = self.all.desc(order_by).page(params[:page])      
     end
     r
