@@ -1,6 +1,6 @@
 <% model_class = Setting %>
 <% title model_class.to_s %>
-<%= link_to "New Setting", new_config_setting_path(@config), :class => "my_button"%>
+<%= link_to "New Setting", new_envsetting_setting_path(@config), :class => "my_button"%>
 <table>
   <thead>
     <tr>
@@ -14,7 +14,8 @@
     	<tr>
       	<td><%= p.name %></td>
       	<td><%= p.value %></td>
-			<td><%= link_to "Edit Setting", edit_config_setting_path(@config, p), :class => "my_button"%></td>
+			<td><%= link_to "Edit", edit_envsetting_setting_path(@config, p), :class => "my_button"%></td>
+			<td><%= link_to "Delete", envsetting_setting_path(@config, p), :method => :delete, :class => "my_button"%></td>			
 		</tr>
 	<% end %>
 	</tbody>

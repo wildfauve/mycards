@@ -28,7 +28,7 @@ Mycards::Application.routes.draw do
   resources :searches
   
   resources :charts
-  resources :configs do
+  resources :envsettings do
     resources :settings
   end
 

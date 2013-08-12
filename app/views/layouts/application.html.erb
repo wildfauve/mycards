@@ -36,8 +36,10 @@
 				<li><%= link_to "Customers", customers_path %></li>
 				<li><%= link_to "Tags", tags_path %></li>
 				<li><%= link_to "Charts", charts_path %></li>
-				<li><%= link_to "Settings", configs_path %></li>				
-				<li><div id='form-hide'><%= link_to "Hide Form", "#" %></div></li>
+				<li><%= link_to "Settings", envsettings_path %></li>
+				<% if @settings.include_hide_form_button %>				
+					<li><div id='form-hide'><%= link_to "Hide Form", "#" %></div></li>
+				<% end %>
 			</ul>
 		</div><!-- /navbar -->
 		<div class="column content">

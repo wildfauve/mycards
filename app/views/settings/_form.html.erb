@@ -1,4 +1,4 @@
-<%= form_for @setting, :url => config_settings_path(@config) do |form| %>
+<%= form_for [@config, @setting] do |form| %>
 	<div class="field">
 		<%= form.text_field :name, :placeholder => "Name" %>
 	</div>

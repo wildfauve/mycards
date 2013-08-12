@@ -1,4 +1,4 @@
-class ConfigsController < ApplicationController
+class EnvsettingsController < ApplicationController
   
   def index
     @configs = Envsetting.all

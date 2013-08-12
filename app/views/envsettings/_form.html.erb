@@ -1,4 +1,4 @@
-<%= form_for @config, :url => configs_path do |form| %>
+<%= form_for @config |form| %>
 	<div class="field">
 		<%= form.text_field :environment, :placeholder => "Name of an environment" %>
 	</div>
