@@ -1,0 +1,11 @@
+<%= form_for @config, :url => configs_path do |form| %>
+	<div class="field">
+		<%= form.text_field :environment, :placeholder => "Name of an environment" %>
+	</div>
+	<div>
+		<p>
+			<%= form.submit "Submit", :class => "small-button" %>
+		</p>
+	</div>
+	
+<% end %>

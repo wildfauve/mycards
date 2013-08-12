@@ -1,4 +1,4 @@
-<% model_class = Envsettings %>
+<% model_class = Envsetting %>
 <% title model_class.to_s %>
 <%= link_to "New Environment", new_config_path, :class => "my_button"%>
 <table>
@@ -6,6 +6,7 @@
     <tr>
       <th width="200">Environment</th>
       <th>Params</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -13,9 +14,11 @@
     	<tr>
       	<td><%= e.environment%></td>
 			<td>
+				<% for p in e.settings%>
+					<%=p.name%> : <%= p.value %>
+				<% end %>
 			</td>
-			<td>
-			</td>
+			<td><%= link_to "Edit Env", config_settings_path(e), :class => "my_button"%></td>
 		</tr>
 	<% end %>
 	</tbody>

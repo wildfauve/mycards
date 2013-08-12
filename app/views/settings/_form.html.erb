@@ -1,0 +1,15 @@
+<%= form_for @setting, :url => config_settings_path(@config) do |form| %>
+	<div class="field">
+		<%= form.text_field :name, :placeholder => "Name" %>
+	</div>
+	<div class="field">
+		<%= form.text_field :value, :placeholder => "value" %>
+	</div>
+
+	<div>
+		<p>
+			<%= form.submit "Submit", :class => "small-button" %>
+		</p>
+	</div>
+	
+<% end %>

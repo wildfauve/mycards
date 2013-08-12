@@ -8,5 +8,9 @@ class Setting
   field :name, type: String
   field :value, type: String
   
+  def self.create_it(params)
+    set = self.new(params)
+    set
+  end
   
 end
