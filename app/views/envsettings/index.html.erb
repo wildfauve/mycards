@@ -1,6 +1,6 @@
 <% model_class = Envsetting %>
 <% title model_class.to_s %>
-<%= link_to "New Environment", new_envsetting_path, :class => "my_button"%>
+<%= link_to "New Environment", new_envsetting_path, :class => "small-button"%>
 <table>
   <thead>
     <tr>
@@ -18,7 +18,7 @@
 					<p><%=p.name%> : <%= p.value %></p>
 				<% end %>
 			</td>
-			<td><%= link_to "Edit Env", envsetting_settings_path(e), :class => "my_button"%></td>
+			<td><%= link_to "Edit Env", envsetting_settings_path(e), :class => "small-button"%></td>
 		</tr>
 	<% end %>
 	</tbody>

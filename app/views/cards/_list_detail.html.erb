@@ -27,7 +27,11 @@
 		</div>
 		<div class="item-links">
 			<%= link_to 'Edit', edit_card_path(@card), :class => "small-button" %>
-			<%= link_to 'Delete', card_path(@card), :method => :delete, :remote => true, :class => "small-button" %>
+			<% if @settings.card_delete_confirm %>
+				<%= link_to 'Delete', card_path(@card), :method => :delete, :confirm => 'Delete Card, are you sure!', :remote => true, :class => "small-button" %>			
+			<% else %>
+				<%= link_to 'Delete', card_path(@card), :method => :delete, :remote => true, :class => "small-button" %>
+			<% end %>
 		</div>
 	</li>
 	</br>
