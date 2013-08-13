@@ -45,7 +45,7 @@ class SettingsController < ApplicationController
   def destroy
     @config = Envsetting.find(params[:envsetting_id]).delete_setting(params[:id])
     respond_to do |format|
-      format.html { redirect_to config_settings_path(@config) }
+      format.html { redirect_to envsettings_settings_path(@config) }
     end
   end
 end
