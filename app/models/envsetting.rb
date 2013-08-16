@@ -47,7 +47,7 @@ class Envsetting
     if set
       set.value == "yes" ? true : false
     else
-      false
+      super
     end
   end
   
