@@ -39,7 +39,7 @@ class CardsController < ApplicationController
   # POST /cards.json
   def create
     @card = Card.create_card(params[:card])
-    Rails.logger.info(">>>card Controller>>CREATE: #{params.inspect}, #{@card.errors.inspect}")    
+    #Rails.logger.info(">>>card Controller>>CREATE: #{params.inspect}, #{@card.errors.inspect}")    
     respond_to do |format|
       if @card.errors.blank?
         format.html { redirect_to card_path(@card) }

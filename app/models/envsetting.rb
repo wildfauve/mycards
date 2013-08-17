@@ -1,4 +1,6 @@
 class Envsetting
+  
+  @@set = nil
 
   include Mongoid::Document
   include Mongoid::Timestamps  
@@ -15,6 +17,12 @@ class Envsetting
     else
       env
     end
+  end
+  
+  def self.settings
+    Rails.logger.info(">>>Envsetting>>SETTINGS: #{@@set.inspect}")        
+    @@set = @@set || self.where(:environment => Rails.env).first
+    
   end
   
   def self.load_settings(env)
@@ -45,7 +53,14 @@ class Envsetting
     # TODO only deals with boolean, and doesn't create a method to call instead of method missing
     set = self.settings.where(:name => meth.to_s).first
     if set
-      set.value == "yes" ? true : false
+      case set.value
+      when "yes"
+        true
+      when "no"
+        false
+      else
+        set.value.to_i
+      end
     else
       super
     end
