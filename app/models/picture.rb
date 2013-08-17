@@ -16,6 +16,7 @@ class Picture
   def self.get_card_image(args)
     if args[:random]
       pics = self.where(:card_id => args[:card].id)
+      return nil if pics.count == 0
       pic = pics[rand(0..pics.size-1)]
     else
       pic = args[:picture]

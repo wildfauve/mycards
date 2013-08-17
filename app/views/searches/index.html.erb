@@ -28,7 +28,7 @@
 								<p>Sold: <%= Date.parse(card.date_sold).strftime('%a %d %B %Y') if !card.date_sold.nil? %></p>
 							</div>
 							<div class='search-pic'>
-								<%= picture_for(:card => card, :size => :thumbnail) %>
+								<%= picture_for(:card => card, :size => :thumbnail, :random => true) %>
 							</div>
 						</div>
 					</li>

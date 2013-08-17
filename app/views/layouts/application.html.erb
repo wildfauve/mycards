@@ -37,8 +37,10 @@
 				<li><%= link_to "Tags", tags_path %></li>
 				<li><%= link_to "Charts", charts_path %></li>
 				<li><%= link_to "Settings", envsettings_path %></li>
-				<% if @settings.include_hide_form_button %>				
-					<li><div id='form-hide'><%= link_to "Hide Form", "#" %></div></li>
+				<% if @settings.include_hide_form_button %>	
+					<% if params[:controller] == "home"%>
+						<li><div id='form-hide'><%= link_to "Hide Form", "#" %></div></li>
+					<% end %>
 				<% end %>
 			</ul>
 		</div><!-- /navbar -->
