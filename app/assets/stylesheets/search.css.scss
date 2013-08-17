@@ -12,7 +12,7 @@
 	text-decoration: none;
 	cursor: pointer;
 	clear: both;
-	height: 80px;
+	height: 100px;
 	margin: 10px;
 	background: #E6E6E6;
 	display: block;
@@ -30,11 +30,18 @@
 	color: red;
 	float: left;
 	margin: 0px 10px;
-	width: 90px;
+	width: 80px;
+}
+
+.search-actions {
+	margin: 10px;
+	width: 20px;
+	float: left;
 }
 
 .search-desc {
-	width: 320px;
+	margin: 5px;	
+	width: 300px;
 	float: left;
 }
 

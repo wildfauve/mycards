@@ -16,6 +16,9 @@
 							<div class="search-ref">
 								<%= card.ref_id %>
 							</div>
+							<div class="search-actions">
+								<%= link_to 'Edit', edit_card_path(card), :class => "small-button" %>								
+							</div>
 							<div class='search-desc'>
 								<% card.description.length > 100 ? append = " ..<more>.." : append = "" %>
 								<%= card.description.slice(0, 100) + append %>
@@ -25,7 +28,7 @@
 								<p>Sold: <%= Date.parse(card.date_sold).strftime('%a %d %B %Y') if !card.date_sold.nil? %></p>
 							</div>
 							<div class='search-pic'>
-								<%= picture_for(card.id) %>
+								<%= picture_for(:card => card, :size => :thumbnail) %>
 							</div>
 						</div>
 					</li>

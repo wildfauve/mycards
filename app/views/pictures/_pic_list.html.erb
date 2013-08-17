@@ -8,7 +8,7 @@
 
 		<li>
 			<div class="pic-item">
-				<%= link_to (image_tag(picture.card_image.thumb(Mycards::Application.config.thumbsize).url, :border => 0)), card_picture_path(@card, picture) %>
+				<%= link_to picture_for(:card => @card, :picture => picture, :size => :thumbnail) %>
 			</div>
 			<div class="pic-actions">
 				<%= link_to 'Delete', card_picture_path(@card, picture), :method => :delete, :class => "small-button" %>

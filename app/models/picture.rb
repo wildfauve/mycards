@@ -13,9 +13,25 @@ class Picture
   
 #  before_save :update_pic_attributes
 
-  def self.random_for_card(card_id)
-    pics = self.where(:card_id => card_id)
-    return pics[rand(0..pics.size-1)].card_image.thumb(Mycards::Application.config.thumbsize).url if !pics.empty?
+  def self.get_card_image(args)
+    if args[:random]
+      pics = self.where(:card_id => args[:card].id)
+      pic = pics[rand(0..pics.size-1)]
+    else
+      pic = args[:picture]
+    end
+    # need to resolve the nil card_image problem
+    if pic.card_image.nil?
+      # need to delete the picture with the nil card_image
+      pic.destroy
+      return nil
+    end
+    case args[:size]
+    when :thumbnail
+      return pic.card_image.thumb(Mycards::Application.config.thumbsize).url
+    else
+      return pic.card_image.thumb(Mycards::Application.config.thumbsize).url
+    end
   end
 
   private

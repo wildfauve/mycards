@@ -1,7 +1,7 @@
 <div class="item-pic">
 	<% if @card.pictures.size > 0 %>
 		<%= link_to card_path(@card) do%>				
-		 <%= image_tag(Picture.random_for_card(@card.id), :border => 0) %>
+		 <%= picture_for(:card => @card, :size => :thumbnail, :random => true) %>
 		<% end %>
 		<p><% pic_text = "Add Another"%></p>
 	<% else %>

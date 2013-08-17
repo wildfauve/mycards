@@ -1,6 +1,8 @@
 module CardsHelper
-  def picture_for(card_id)    
-    pic = Picture.random_for_card(card_id)
+  
+  # :card => Card object, :picture => Picture object, :size => :thumbnail/
+  def picture_for(args)    
+    pic = Picture.get_card_image(args)
     image_tag(pic, :border => 0) if !pic.nil?
   end  
     
