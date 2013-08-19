@@ -1,5 +1,7 @@
 class Card
   
+  @@per_page = 10
+  
   include Mongoid::Document
   include Mongoid::Timestamps  
     
@@ -113,13 +115,13 @@ class Card
 
   def self.search(params)
     page = params[:page] || "1"
-    doc_from = ((page.to_i - 1) * 10)
+    doc_from = ((page.to_i - 1) * @@per_page)
     if params[:search].present?  # param entered from the search box
       params[:src].present? ? qstring = params[:src] + ":" + params[:search] : qstring = params[:search] 
       r = tire.search do
         query {string qstring }
         from doc_from
-        size Envsetting.settings.card_page_size
+        size @@per_page
       end
     else
       order_by = :ref_id
